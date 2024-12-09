@@ -2,6 +2,160 @@
 
 <-- CMS Development -->
 
+
+09-12-2024<br>
+Basic setting in CMS in HubSpot are below
+
+Setting -> Tools -> Content -> Pages (Template/Branding/personalzation/intergration/SEO & Crawlers/System Pages)
+Setting -> Tools -> Blogs ->
+Setting -> Tools -> Marketing -> Email 
+Setting -> Tools -> Content -> Domaings & URLs
+Setting -> Account Management -> Users & Team
+
+Two Built-in Navigation options
+
+* Menu module
+* Simple Menu module
+
+
+Setting -> Tools -> Navigation menus
+
+
+HubL is a markUp Language which use some parts jija
+
+## Fundamental of HubL
+Statements sytax - {% set my_variable = "Example of Statements Systax"%}
+
+{% set my_variable = "I'm a string!"%} 
+String, int, Boolean
+
+Expression Sytax -> {{ an_expression_evaluates_to_a_value_}}
+
+{{my_variable}}
+
+Comments Sytax -> {# Comments Aren't Rendered Client Side#} 
+
+{#OUTPUT: I'm a String!#}
+
+
+
+
+List:  Creating a list and retriving the first value 
+{% set my_list =["String1, "String2", "String3"] %} //List Statement
+{{my_list[0]}} //List Expression
+{#OUTPUT: String 1#} /List Comments
+
+
+
+
+Dictionary: Creating a dictionary and retrieving a value
+
+
+{% set my_dictionary ={"name":"Varghese" "age":26, "eye_color":"blue"} %} //DictionaryStatement
+{{my_dictionary.eye_color}} //Dictionary Expression. Dictionary items accessed through dot eye_color
+{#OUTPUT: blue#} /Dictionary Comments
+
+
+
+
+Creating and calling macro
+{% macro add_numbers(n1, n2)%}
+{{n1+n2}}
+{%end macro%}
+{{add_numbers(4,5)}}
+{#Output: 9#}
+
+
+
+
+
+
+Conditional Statements 	and Expression tests
+
+{%set friends =['Serah','Benia','Evan']%}
+{%if friends is iterable%}
+<p>My friends are {{friends|join(', ')}}</p>
+{%else %}
+ <p>My Friends is {{friends}}</p>
+ {% endif %}
+ 
+ {#OUTPUT: My Friends are Serah, Benia, Evan #}
+ 
+ 
+ 
+ Loops with properties and filters
+ 
+ {%set numbers =['one', 'two', 'three']%}
+ {% for number in numbers|reverse %}
+ <p>Loop index:{{loop.index}} number:{{ number}}</p>
+ {% endfor %}
+ 
+ {#
+ OUTPUT:
+ Loop index:1 number:3
+ Loop index:2 number:2
+ Loop index:3 number:1
+ #}
+ 
+ 
+ 
+ 
+ 
+ ## Module markup in coded templates
+ 
+ Two flavors of syntax
+ 
+ * Basic module systax {% text "movie_name" Label="move_name", value="Citizen kane" %}
+ * Block sytax
+ 
+ 
+ 
+ 
+ 
+ 
+ ## HubL Filters
+ 
+ Length Filter
+ {% set mySeq =['thing1', 'thing2', 'thing3']%}
+ {{mySeq|length}}
+ {#OUTPUT: 3#}
+ 
+ 
+ reject attribute
+ {% set unreadBooks = myBooks|rejectattr('read')%}
+ 
+ ShortHand application of reject attribute
+ {% for book in myBooks|rejectattr('read') %}
+ 
+ 
+ pretty print filters (Debuggin)
+ {{ site_setting|pprint}}
+ 
+ 
+ 
+ 
+ 
+ {% macro rem(values) %}
+  {% set baselineFontSize =16 %}
+     {% set remValue = value/baselineFontSize %}
+{{ remValue }}rem
+
+{% endmacro %}
+
+
+
+{% macro rem(values) %}
+  {% set baselineFontSize =16 %}
+  {% set cssValues =[] %}
+  {% for v in values %}
+{% set thisVal = v/baselineFontSize~'rem' %}
+ {% do cssValue.append(thisVal) %}
+{% endfor %}
+{{ cssValues|join(', ')}}
+{% endmacro %}
+
+<------------------------------------------------------------------------------------------->
+
 -> Create a Folder in Desktop Open in VSCode
 -> VSCode Terminal enter the 
 S C:\Users\u\Desktop\LOCAL-DEV-DEMO> npm install @hubspot/cli
