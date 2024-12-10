@@ -3,6 +3,102 @@
 <-- CMS Development -->
 
 
+## 11-12-2024 - Yet To Practise DND
+## Drag & Drop arears in the Hubspot CMS (10/12/2024 Study material video is older. Lot of thing changed when i working)
+
+
+Step1: npx @hubspot/create-cms-project dnd-demo
+
+npx hs watch dnd-demo/src boilerplate
+
+if we have a Security Issue with hubspot.config.yml
+Step 2: Move the hubspot.config.yml file to a secure location, such as your home directory
+mv C:\Users\u\Desktop\LOCAL-DEV-DEMO\hubspot.config.yml C:\Users\u\
+
+Update the CLI to use the new location
+npx hs watch dnd-demo/src boilerplate --config=C:\Users\u\hubspot.config.yml
+
+
+
+Step 3: dnd-demo Will created in the Content -> Website Pages (dnd-demo)will displayed // it will take some time reflect in the hubspot account and in website page dashBoard.
+PS C:\Users\u\Desktop\LOCAL-DEV-DEMO> npx hs upload dnd-demo/src boilerplate
+
+
+
+
+
+
+<------------------------------------------------------------------------------------------->
+
+## 10-12-2024
+## Building hubSpot Template (Follow same steps)
+
+PS C:\Users\u\Desktop\LOCAL-DEV-DEMO> hs create template basic-template-demo /create basic template/
+(node:4228) [DEP0040] DeprecationWarning: The `punycode` module is deprecated. Please use a userland alternative instead.
+(Use `node --trace-deprecation ...` to show where the warning was created)
+? Select the type of template to create page
+Creating file at C:\Users\u\Desktop\LOCAL-DEV-DEMO\basic-template-demo.html
+
+
+<!--
+    templateType: page
+    label: Page template
+    isAvailableForNewContent: true
+-->
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>{{ content.html_title }}</title>
+    <meta name="description" content="{{ content.meta_description }}">
+    {{ standard_header_includes }}
+  </head>
+  <body>
+    {% module "page_template_logo" path="@hubspot/logo" label="Logo" %}
+
+    <h1>This headline is static</h1> // add this line its not able to change it static
+
+    {% module "page_template_rich_text" path="@hubspot/rich_text" label="My First Rich Text Field Module" %} //changed in label as My First Rich Text Field Module//
+     {% module_attribute "html"%}
+
+     <h2>This headline is not static</h2> // add this line its able to change it not a static
+     <p>This paragraph isn't either!</p>// add this line
+     {% end_module_attribute %}// add this line
+     {% end_module_block %}// add this line
+
+     {% module "page_template_rich_text" path="@hubspot/rich_text" label="Rich Text" %} // add this line
+
+
+    {{ standard_footer_includes }}
+  </body>
+
+</html>
+
+
+
+PS C:\Users\u\Desktop\LOCAL-DEV-DEMO> hs upload basic-template-demo.html basic-template-demo.html // change done use this cmd to upload see change hubl account
+[WARNING] Security Issue Detected
+[WARNING] The HubSpot config file can be tracked by git.
+[WARNING] File: "C:\Users\u\Desktop\LOCAL-DEV-DEMO\hubspot.config.yml"
+[WARNING] To remediate:
+[WARNING] - Move the config file to your home directory: 'C:\Users\u' 
+[WARNING] - Add gitignore pattern 'C:\Users\u\Desktop\LOCAL-DEV-DEMO\hubspot.config.yml' to a .gitignore file in root of your repository.
+[WARNING] - Ensure that the config file has not already been pushed to a remote repository.
+(node:13176) [DEP0040] DeprecationWarning: The `punycode` module is deprecated. Please use a userland alternative instead.
+(Use `node --trace-deprecation ...` to show where the warning was created)
+[SUCCESS] Uploaded file from "basic-template-demo.html" to "basic-template-demo.html" in the Design Manager of account 48440318
+
+
+
+HubSpot Account -> Content -> Design Manager // here we can see our basic-template-demo.html
+HubSpot Account -> Content -> Website page -> create -> page name is basic-template-demo -> basic-template-demo Available in website pages  // here we can upload our template //
+
+
+
+
+
+<------------------------------------------------------------------------------------------->
+
 09-12-2024<br>
 Basic setting in CMS in HubSpot are below
 
