@@ -2,8 +2,46 @@
 
 <-- CMS Development -->
 
+## 11-12-2024
 
-## 11-12-2024 - Yet To Practise DND
+## Create a Module in HubSpot (Building Hubspot CMS Modules)
+
+module.html (Hubl + HTML)
+<div class="two-col-feature {{ module.choice_field }}">
+  <div class="col text">
+
+{% inline_rich_text field="feature_text" value="{{ module.feature_text }}" %}
+  </div>
+  
+  <div class="col image">
+    {% if module.feature_image.src %}
+	{% set sizeAttrs = 'width="{{ module.feature_image.width|escape_attr }}" height="{{ module.feature_image.height|escape_attr }}"' %}
+	{% if module.feature_image.size_type == 'auto' %}
+		{% set sizeAttrs = 'width="{{ module.feature_image.width|escape_attr }}" height="{{ module.feature_image.height|escape_attr }}" style="max-width: 100%; height: auto;"' %}
+	{% elif module.feature_image.size_type == 'auto_custom_max' %}
+		{% set sizeAttrs = 'width="{{ module.feature_image.max_width|escape_attr }}" height="{{ module.feature_image.max_height|escape_attr }}" style="max-width: 100%; height: auto;"' %}
+	{% endif %}
+	 {% set loadingAttr = module.feature_image.loading != 'disabled' ? 'loading="{{ module.feature_image.loading|escape_attr }}"' : '' %}
+	<img src="{{ module.feature_image.src|escape_url }}" alt="{{ module.feature_image.alt|escape_attr }}" {{ loadingAttr }} {{ sizeAttrs }}>
+{% endif %}
+    
+  </div>
+</div>
+
+
+## Module.css
+.two-col-feature{
+  display: flex;
+}
+.two-col-featue.img-left{
+  flex-direction: row-reverse;
+}
+
+Note: this two feature rich text & image which can be move from left to right row-reverse like to check https://app.hubspot.com/design-manager/48440318/modules/183775650332
+
+
+
+## 11-12-2024 - Practise and Completed DND
 ## Drag & Drop arears in the Hubspot CMS (10/12/2024 Study material video is older. Lot of thing changed when i working)
 
 
