@@ -2,6 +2,213 @@
 
 <-- CMS Development -->
 
+## 17-12-2024
+## Building a Theme
+
+Vscode 
+PS C:\Users\u\Desktop\LOCAL-DEV-DEMO> mkdir tiju-theme
+PS C:\Users\u\Desktop\LOCAL-DEV-DEMO> cd tiju-theme 
+PS C:\Users\u\Desktop\LOCAL-DEV-DEMO\tiju-theme> mkdir templates, modules, js, images, css
+PS C:\Users\u\Desktop\LOCAL-DEV-DEMO\tiju-theme> hs create template templates/basic-page
+(node:2540) [DEP0040] DeprecationWarning: The `punycode` module is deprecated. Please use a userland alternative instead.
+(Use `node --trace-deprecation ...` to show where the warning was created)
+? Select the type of template to create page
+Creating file at C:\Users\u\Desktop\LOCAL-DEV-DEMO\tiju-theme\templates\basic-page.html
+
+
+<!--
+    templateType: page
+    label: Page template
+    isAvailableForNewContent: true
+-->
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>{{ content.html_title }}</title>
+    <meta name="description" content="{{ content.meta_description }}">
+    {{ standard_header_includes }}
+  </head>
+  <body>
+    <div class="page-wrap">  //add this line
+      <header>   //add this line
+    {% module "page_template_logo" path="@hubspot/logo" label="Logo" %}
+    </header>  //add this line
+    {% module "page_template_rich_text" path="@hubspot/rich_text" label="Rich Text" %}
+  </div> //add this line
+    {{ standard_footer_includes }}
+  </body>
+</html>
+
+PS C:\Users\u\Desktop\LOCAL-DEV-DEMO\tiju-theme> mkdir templates/partials
+
+
+PS C:\Users\u\Desktop\LOCAL-DEV-DEMO\tiju-theme> hs create template templates/partials/header
+(node:9660) [DEP0040] DeprecationWarning: The `punycode` module is deprecated. Please use a userland alternative instead.
+(Use `node --trace-deprecation ...` to show where the warning was created)
+? Select the type of template to create 
+  page
+  email
+  partial
+> global partial // select this
+
+
+
+## // add below line in folder partials->header.html
+<!--
+    templateType: global_partial
+    label: Global partial
+    isAvailableForNewContent: false
+-->
+<!-- Begin partial -->
+
+<header>
+    {% module "page_template_logo" path="@hubspot/logo" label="Logo" %}
+    </header>
+
+<!-- End partial -->
+
+
+
+
+## // add the partial line here the basic-html.page
+
+<!--
+    templateType: page
+    label: Page template
+    isAvailableForNewContent: true
+-->
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>{{ content.html_title }}</title>
+    <meta name="description" content="{{ content.meta_description }}">
+    {{ standard_header_includes }}
+  </head>
+  <body>
+    <div class="page-wrap">
+      {% global_partial path='./partials/header.html'} // add the partial line here the basic-html.page
+    {% module "page_template_rich_text" path="@hubspot/rich_text" label="Rich Text" %}
+  </div>
+    {{ standard_footer_includes }}
+  </body>
+</html>
+
+
+create empty css->main.css // using ttouch css/main.css command or PS C:\Users\u\Desktop\LOCAL-DEV-DEMO> "" > css/main.css 
+
+
+## // add this line basic-page.html
+
+<!--
+    templateType: page
+    label: Page template
+    isAvailableForNewContent: true
+-->
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>{{ content.html_title }}</title>
+    <meta name="description" content="{{ content.meta_description }}">
+    
+    {{require_css(get_asset_url('../css/main.css'))}} // add this line 
+
+    {{ standard_header_includes }}
+  </head>
+  <body>
+    <div class="page-wrap">
+      {% global_partial path='./partials/header.html'}
+    {% module "page_template_rich_text" path="@hubspot/rich_text" label="Rich Text" %}
+  </div>
+    {{ standard_footer_includes }}
+  </body>
+</html>
+
+
+## main.css
+
+*{
+    box-sizing: border-box;
+    font-family: Helvetica, sans-serif;
+}
+html,
+body{
+    margin: 0;
+    padding: 0;
+    background-color: #eee;
+}
+
+.page-wrap{
+    color: #000;
+    max-width: 1100px;
+    margin: 0 auto;
+    background-color: #ddd;
+    padding: 1em;
+    min-height: 100vh;
+}
+header{
+    text-transform: uppercase;
+    letter-spacing: .3em;
+    background-color: #eee;
+    background: url({{get_asset_url('../images/ttm-Icon-16x16')}}) 0 39% no-repeat #333;
+    background-size: cover;
+    color: #fff;
+    padding: 1em 50% 1em 2em;
+    margin-bottom: 3em;
+
+}
+
+PS C:\Users\u\Desktop\LOCAL-DEV-DEMO> "" > fields.json  
+[
+    {
+        "label": "Text Color",
+        "name": "text_color",
+        "type": "color",
+        "default":{
+            "color": "#000"
+        }
+    }
+]
+
+
+
+PS C:\Users\u\Desktop\LOCAL-DEV-DEMO> "" > theme.json 
+
+{
+    "lable": "tiju",
+    "preview_path" : "./templates/basic-page.html"
+}
+
+
+
+
+## main.css change this line // refer the css 
+.page-wrap{
+    color: {{theme.text_color.color}};
+
+
+
+PS C:\Users\u\Desktop\LOCAL-DEV-DEMO> hs upload tiju-theme
+[WARNING] Security Issue Detected
+[WARNING] The HubSpot config file can be tracked by git.
+[WARNING] File: "C:\Users\u\Desktop\LOCAL-DEV-DEMO\hubspot.config.yml"
+[WARNING] To remediate:
+[WARNING] - Move the config file to your home directory: 'C:\Users\u'
+[WARNING] - Add gitignore pattern 'C:\Users\u\Desktop\LOCAL-DEV-DEMO\hubspot.config.yml' to a .gitignore file in root of your repository.     
+[WARNING] - Ensure that the config file has not already been pushed to a remote repository.
+(node:7416) [DEP0040] DeprecationWarning: The `punycode` module is deprecated. Please use a userland alternative instead.
+(Use `node --trace-deprecation ...` to show where the warning was created)
+? [--dest] Enter the destination path:  hs upload tiju-theme /themes/tiju-theme
+Uploading files from "tiju-theme" to "hs upload tiju-theme /themes/tiju-theme" in the Design Manager of account 48440318
+Uploaded file "C:\Users\u\Desktop\LOCAL-DEV-DEMO\tiju-theme\css\main.css" to "hs upload tiju-theme /themes/tiju-theme/css/main.css"
+Uploaded file "C:\Users\u\Desktop\LOCAL-DEV-DEMO\tiju-theme\templates\basic-page.html" to "hs upload tiju-theme /themes/tiju-theme/templates/basic-page.html"
+Uploaded file "C:\Users\u\Desktop\LOCAL-DEV-DEMO\tiju-theme\templates\partials\header.html" to "hs upload tiju-theme /themes/tiju-theme/templates/partials/header.html"
+[SUCCESS] Uploading files to "hs upload tiju-theme /themes/tiju-theme" in the Design Manager is complete
+
+<------------------------------------------------------------------------------------------->
+
 ## 11-12-2024
 
 ## Create a Module in HubSpot (Building Hubspot CMS Modules)
