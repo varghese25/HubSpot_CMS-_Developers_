@@ -1,3 +1,152 @@
+## HubSpot-Exam Certfication (Steps 19-12-2024)
+
+
+Themes
+
+u@DESKTOP-OODIU93 MINGW64 /e/HubSpot-Exam
+$ npm install  @hubspot/cli
+
+hs init
+
+u@DESKTOP-OODIU93 MINGW64 /e/HubSpot-Exam
+$ hs init
+(node:10784) [DEP0040] DeprecationWarning: The `punycode` module is deprecated. Please use a userland alternative instead.
+(Use `node --trace-deprecation ...` to show where the warning was created)
+--------------------------------------------------
+HubSpot Personal Access Key Setup
+
+A personal access key is required to authenticate the CLI to interact with your HubSpot account. We'll open a secure page in your default browser where you can view and copy your personal 
+access key.
+
+--------------------------------------------------
+? Open hubspot.com to copy your personal access key? Yes
+Opening https://app.hubspot.com/l/personal-access-key in your web browser
+? Enter your personal access key:  ***********************************************************************************************************
+? Enter a unique name to reference this account in the CLI: varghesebaby
+
+[SUCCESS] Created config file "E:\HubSpot-Exam/hubspot.config.yml"
+[SUCCESS] Connected account "varghesebaby" using "Personal Access Key" and set it as the default account
+--------------------------------------------------
+What's next?
+
+Run `hs help` to see a list of available commands
+
+Run `hs auth` to connect the CLI to additional HubSpot accounts
+
+Run `hs accounts list` to see a list of configured HubSpot accounts
+
+--------------------------------------------------
+
+u@DESKTOP-OODIU93 MINGW64 /e/HubSpot-Exam
+
+
+
+Folder Creation
+
+u@DESKTOP-OODIU93 MINGW64 /e/HubSpot-Exam
+$ mkdir hubspot-praticum
+
+u@DESKTOP-OODIU93 MINGW64 /e/HubSpot-Exam
+$ cd hubspot-praticum
+
+u@DESKTOP-OODIU93 MINGW64 /e/HubSpot-Exam/hubspot-praticum
+$ mkdir templates modules js images css
+
+u@DESKTOP-OODIU93 MINGW64 /e/HubSpot-Exam/hubspot-praticum
+$ cd templates
+
+u@DESKTOP-OODIU93 MINGW64 /e/HubSpot-Exam/hubspot-praticum/templates
+$ mkdir partials
+
+
+
+u@DESKTOP-OODIU93 MINGW64 /e/HubSpot-Exam
+$ cd hubspot-praticum
+
+u@DESKTOP-OODIU93 MINGW64 /e/HubSpot-Exam/hubspot-praticum
+$ hs create template templates/basic-page
+(node:7496) [DEP0040] DeprecationWarning: The `punycode` module is deprecated. Please use a userland alternative instead.
+(Use `node --trace-deprecation ...` to show where the warning was created)
+? Select the type of template to create (Use arrow keys)
+? Select the type of template to create page
+Creating file at E:\HubSpot-Exam\hubspot-praticum\templates\basic-page.html
+
+
+u@DESKTOP-OODIU93 MINGW64 /e/HubSpot-Exam/hubspot-praticum
+$ hs create template templates/partials/header  // select global partials
+(node:3896) [DEP0040] DeprecationWarning: The `punycode` module is deprecated. Please use a userland alternative instead.
+(Use `node --trace-deprecation ...` to show where the warning was created)
+? Select the type of template to create (Use arrow keys)
+? Select the type of template to create 
+? Select the type of template to create 
+? Select the type of template to create 
+? Select the type of template to create global partial
+Creating file at E:\HubSpot-Exam\hubspot-praticum\templates\partials\header.html
+
+
+
+u@DESKTOP-OODIU93 MINGW64 /e/HubSpot-Exam/hubspot-praticum
+$ hs create template templates/partials/footer // select global partials 
+(node:9268) [DEP0040] DeprecationWarning: The `punycode` module is deprecated. Please use a userland alternative instead.
+(Use `node --trace-deprecation ...` to show where the warning was created)
+? Select the type of template to create (Use arrow keys)
+? Select the type of template to create 
+? Select the type of template to create 
+? Select the type of template to create 
+? Select the type of template to create global partial
+Creating file at E:\HubSpot-Exam\hubspot-praticum\templates\partials\footer.html
+
+
+
+u@DESKTOP-OODIU93 MINGW64 /e/HubSpot-Exam/hubspot-praticum
+$ touch fileds.json
+[
+    {
+        "label": "Text Color",
+        "name": "text_color",
+        "type": "color",
+        "default": {
+            "color": "#000"
+
+        }
+
+    }
+]
+
+
+u@DESKTOP-OODIU93 MINGW64 /e/HubSpot-Exam/hubspot-praticum
+$ touch theme.json
+
+{
+    "label": "HubSpot Exam theme",
+    "preview": "./template/basic-page.html"
+}
+
+
+CSS folder -> create #main.css file 
+
+
+
+templates->basic-page.html
+ {{require_css (get_asset_url('../css/main.css'))}} <!-- inclue this line-->>
+ 
+ 
+ 
+ 
+ //Upload LocalCode to HubSpot Accout
+ 
+ u@DESKTOP-OODIU93 MINGW64 /e/HubSpot-Exam/hubspot-praticum
+$ hs upload 'HUBSPOT-EXAM' 'hubspot-exam'
+
+
+
+
+
+
+
+
+<------------------------------------------------------------------------>
+
 ## HubSpot CMS Development Command Document
 
 <-- CMS Development -->
