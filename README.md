@@ -1,7 +1,75 @@
-## HubSpot-Exam Certfication (Steps 19-12-2024)
 
 
-Themes
+
+## HubSpot-Exam Certfication 
+
+ ## 20-12-2024
+
+
+ //Upload LocalCode to HubSpot Accout ((Whole Folder))
+ 
+ u@DESKTOP-OODIU93 MINGW64 /e/HubSpot-Exam/hubspot-praticum 
+$ hs upload 'hubspot-praticum' 'hubspot-exam'
+
+
+// /Upload LocalCode to HubSpot Accout (Only File path)
+u@DESKTOP-OODIU93 MINGW64 /e/HubSpot-Exam (master)
+$ hs upload 'hubspot-praticum' 'hubspot-exam'   (Only File path)
+
+
+u@DESKTOP-OODIU93 MINGW64 /e/HubSpot-Exam (master) 
+$ hs upload 'hubspot-praticum' 'hubspot-exam'
+
+
+Create Section/Mission (Partial Page)
+
+u@DESKTOP-OODIU93 MINGW64 /e/HubSpot-Exam (master)
+$ cd hubspot-praticum
+
+u@DESKTOP-OODIU93 MINGW64 /e/HubSpot-Exam/hubspot-praticum (master)
+$ hs create template section/mission // partial Page
+(node:7004) [DEP0040] DeprecationWarning: The `punycode` module is deprecated. Please use a userland alternative instead.
+(Use `node --trace-deprecation ...` to show where the warning was created)
+? Select the type of template to create partial
+Creating file at E:\HubSpot-Exam\hubspot-praticum\section\mission.html
+
+
+
+u@DESKTOP-OODIU93 MINGW64 /e/HubSpot-Exam (master)
+$ hs upload 'hubspot-praticum' 'hubspot-exam'
+[WARNING] Security Issue Detected
+[WARNING] The HubSpot config file can be tracked by git.
+[WARNING] File: "E:\HubSpot-Exam\hubspot.config.yml"
+[WARNING] To remediate:
+[WARNING] - Move the config file to your home directory: 'C:\Users\u'
+[WARNING] - Add gitignore pattern 'E:\HubSpot-Exam\hubspot.config.yml' to a .gitignore file in root of your repository.
+[WARNING] - Ensure that the config file has not already been pushed to a remote repository.
+(node:13200) [DEP0040] DeprecationWarning: The `punycode` module is deprecated. Please use a userland alternative instead.
+(Use `node --trace-deprecation ...` to show where the warning was created)
+Uploading files from "hubspot-praticum" to "hubspot-exam" in the Design Manager of account 48440318
+Uploaded file "E:\HubSpot-Exam\hubspot-praticum\css\main.css" to "hubspot-exam/css/main.css"
+Uploaded file "E:\HubSpot-Exam\hubspot-praticum\section\mission.html" to "hubspot-exam/section/mission.html"
+Uploaded file "E:\HubSpot-Exam\hubspot-praticum\templates\partials\footer.html" to "hubspot-exam/templates/partials/footer.html"
+Uploaded file "E:\HubSpot-Exam\hubspot-praticum\templates\partials\header.html" to "hubspot-exam/templates/partials/header.html"
+Uploaded file "E:\HubSpot-Exam\hubspot-praticum\theme.json" to "hubspot-exam/theme.json"
+Uploaded file "E:\HubSpot-Exam\hubspot-praticum\fields.json" to "hubspot-exam/fields.json"
+Uploaded file "E:\HubSpot-Exam\hubspot-praticum\templates\basic-page.html" to "hubspot-exam/templates/basic-page.html"
+[SUCCESS] Uploading files to "hubspot-exam" in the Design Manager is complete
+
+
+
+## https://app.hubspot.com/design-manager/48440318/code/184097013871?tfid=184096497052
+
+## 48440318 : HubSpot Account Number
+## code/184097013871: Module number
+
+ {% module "module_184097013871" path="@hubspot/email_cta", label="email_cta.module" %}
+
+tfid=184096497052: a reference to another resource (e.g., a template, folder, or linked file) within the same workspace
+
+-------------------------------------------------------------------------------------------------------
+
+Themes (Steps 19-12-2024)
 
 u@DESKTOP-OODIU93 MINGW64 /e/HubSpot-Exam
 $ npm install  @hubspot/cli
