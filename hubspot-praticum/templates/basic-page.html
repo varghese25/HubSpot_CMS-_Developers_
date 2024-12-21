@@ -1,0 +1,56 @@
+<!--
+    templateType: page
+    label: Page template
+    isAvailableForNewContent: true
+-->
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>{{ content.html_title }}</title>
+    <meta name="description" content="{{ content.meta_description }}">
+    {{ require_css(get_asset_url('../css/layout.css')) }}
+    {{require_css (get_asset_url('../css/main.css'))}} <!-- inclue this line-->
+
+  </head>
+  <body>
+    {% global_partial path='./partials/header.html' %} <!-- here global partials- header linked-->
+    <main id="content"> <!-- Add This line for DND-->
+      <div class="container">
+        <section class="mission-section">
+          <h1>Our Mission</h1>
+
+          {% dnd_area "mission_area" label="Mission Area" %}
+            {% dnd_section
+              padding={
+                top: 10,
+                bottom: 10,
+                left: 0,
+                right: 0
+              }
+            %}
+              {% dnd_column width=6 %}
+                {% dnd_row %}
+                  <div class="featured-image">
+                    {% dnd_module "image" path="@hubspot/image" flexbox_positioning="MIDDLE_CENTER", label="Featured Image" %}
+                    {% end_dnd_module %}
+                  </div>
+                {% end_dnd_row %}
+              {% end_dnd_column %}
+              {% dnd_column width=6, offset=6 %}
+                {% dnd_row %}
+                  {% dnd_module "rich_text" path="@hubspot/rich_text" label="Mission Statement" %}
+                  {% end_dnd_module %}
+                {% end_dnd_row %}
+              {% end_dnd_column %}
+            {% end_dnd_section %}
+          {% end_dnd_area %}
+        </section> <!-- Tell here-->
+        <section class="team-section">
+          <h1>Our Team</h1>
+    {% include_dnd_partial path="../sections/mission.html"%} <!--partial drag n drop  sections /mission-->
+    {% module "page_template_logo" path="@hubspot/logo" label="Logo" %}
+    {% module "page_template_rich_text" path="@hubspot/rich_text" label="Rich Text" %}
+    {% global_partial path='./partials/footer.html' %} <!-- here global partials- footer linked-->
+  </body>
+</html>

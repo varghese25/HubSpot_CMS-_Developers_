@@ -1,0 +1,13 @@
+<!--
+    templateType: global_partial
+    label: Global partial
+    isAvailableForNewContent: false
+-->
+<!-- Begin partial -->
+ {{standard_header_includes}}
+ 
+ {% header "my_header" header_tag="h1", overrideable=True, value="Cats are wonderful", label="Header" %}
+ {% textarea "my_textarea" label="Sub Heading",value="The naming of the cat is difficult matter" no_wrapper=True %}
+ {% menu "menu" %}
+ {% menu "my_menu" id=456, site_map_name='Default', overrideable=False, root_type='site_root', flyouts='true', max_levels='2', flow='horizontal', label='Advanced Menu' %}
+<!-- End partial -->
