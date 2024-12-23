@@ -3,6 +3,13 @@
 
 ## HubSpot-Exam Certfication 
 
+
+## 23-12-2024
+Library -> File -> Click image -> Copy URL
+
+ "src": "https://48440318.fs1.hubspotusercontent-na1.net/hubfs/48440318/cat_1.jpg",
+
+
  ## 20-12-2024
 
 
