@@ -4,6 +4,77 @@
 ## HubSpot-Exam Certfication 
 
 
+##27-12-2024
+[
+ {
+  "type": "text",
+  "id": "ebf36aa5-be35-bd50-efd5-2ae544cd3460",
+  "validation_regex": "",
+  "label": "Team Header",
+  "name": "team_header",
+  "default": "Our Team",
+  "required": false,
+  "locked": false,
+  "visibility": null,
+  "occurrence": null
+ },
+ {
+  "type": "image",
+  "id": "9b4d7ebf-c1e9-3954-4e04-db3f675af022",
+  "default": {
+   "size_type": "exact",
+   "src": "https://48440318.fs1.hubspotusercontent-na1.net/hubfs/48440318/person_1.jpg",
+   "alt": "person_1",
+   "loading": "lazy",
+   "width": 235,
+   "height": 148,
+   "max_width": 235,
+   "max_height": 148
+  },
+  "resizable": true,
+  "responsive": true,
+  "show_loading": false,
+  "label": "Member Image",
+  "name": "image_field",
+  "visibility": {
+   "operator": "NOT_EMPTY"
+  },
+  "required": true,
+  "locked": true
+ },
+ {
+  "type": "text",
+  "id": "0a9eb312-c0db-6da5-973e-2096e4a7783d",
+  "validation_regex": "",
+  "label": "Member_Name",
+  "name": "member_name",
+  "show_emoji_picker": false,
+  "default": "John Doe",
+  "occurrence": null
+ },
+ {
+  "type": "group",
+  "id": "4bac2acd-c236-f683-48a7-e33680a738f6",
+  "label": "member_position",
+  "children": [
+   {
+    "type": "text",
+    "id": "74050be0-a8e8-020f-4f70-3f76f7968419",
+    "validation_regex": "",
+    "label": "Member Position",
+    "name": "member_position",
+    "default": "CEO",
+    "required": false
+   }
+  ],
+  "name": "member_position",
+  "default": {
+   "member_position": "CEO"
+  }
+ }
+]
+
+
 ## 23-12-2024
 Library -> File -> Click image -> Copy URL
 
