@@ -4,6 +4,107 @@
 ## HubSpot-Exam Certfication 
 
 
+## 28-12-2024
+<!--
+    templateType: global_partial
+    label: Page Header
+    isAvailableForNewContent: false
+-->
+<!-- Begin partial -->
+
+{{standard_header_includes}}
+
+<!-- Container for horizontal headers -->
+<div style="display: flex; gap: 15px;">
+  {% header "Home" header_tag="h4", overrideable=True, value="Home", label="Header" %}
+  {% header "About" header_tag="h4", overrideable=True, value="About", label="Header" %}
+  {% header "Blog" header_tag="h4", overrideable=True, value="Blog", label="Header" %}
+</div>
+
+{% textarea "my_textarea" label="Sub Heading", value="The naming of the cat is difficult matter" no_wrapper=True %}
+{% menu "menu" %}
+{% menu "my_menu" id=456, site_map_name='Default', overrideable=False, root_type='site_root', flyouts='true', max_levels='2', flow='vertical', label='Advanced Menu' %}
+
+<!-- End partial -->
+
+
+<!--
+    templateType: global_partial
+    label: Global partial
+    isAvailableForNewContent: false
+-->
+<!-- Begin partial -->
+<footer>
+    <div class="container">
+        {% module "footer_menu" path="@hubspot/menu", label="Footer Menu" id="66210624182" %}
+    </div>
+</footer>
+<!-- End partial -->
+
+
+<!--
+    templateType: page
+    label: page template
+    isAvailableForNewContent: true
+-->
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>{{ content.html_title }}</title>
+    <meta name="description" content="{{ content.meta_description }}">
+    {{ require_css(get_asset_url('../css/layout.css')) }}
+    {{ require_css(get_asset_url('../css/main.css')) }}
+    {{ standard_header_includes }}
+  </head>
+  <body>
+    {% global_partial path="./partials/header.html" %}
+
+    <main id="content">
+      <div class="container">
+        <section class="mission-section">
+          <h1>Our Mission</h1>
+
+          {% dnd_area "mission_area" label="Mission Area" %}
+            {% dnd_section
+              padding={
+                top: 10,
+                bottom: 10,
+                left: 0,
+                right: 0
+              }
+            %}
+              {% dnd_column width=6 %}
+                {% dnd_row %}
+                  <div class="featured-image">
+                    {% dnd_module "image" path="@hubspot/image" flexbox_positioning="MIDDLE_CENTER", label="Featured Image" %}
+                    {% end_dnd_module %}
+                  </div>
+                {% end_dnd_row %}
+              {% end_dnd_column %}
+              {% dnd_column width=6, offset=6 %}
+                {% dnd_row %}
+                  {% dnd_module "rich_text" path="@hubspot/rich_text" label="Mission Statement" %}
+                  {% end_dnd_module %}
+                {% end_dnd_row %}
+              {% end_dnd_column %}
+            {% end_dnd_section %}
+          {% end_dnd_area %}
+        </section>
+
+        <section class="team-section">
+          <h1>Our Team</h1>
+          {% module "team_module" path="../modules/team", label="Team" %}
+        </section>
+      </div>
+    </main>
+
+    {% global_partial path="./partials/footer.html" %}
+
+    {{ standard_footer_includes }}
+  </body>
+</html>
+
 ##27-12-2024
 [
  {
